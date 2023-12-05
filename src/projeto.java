@@ -12,7 +12,7 @@ public class projeto {
         int nItens = 0;
 
 
-        String novalista []  ;
+        String novalista[];
 
 
         String menuPrincipal = "(E)ditar lista.\n"
@@ -61,8 +61,10 @@ public class projeto {
                             nome[nItens] = novoProduto;
                             System.out.println("Indique a sua quantidade.");
                             double quantidade = scanner.nextDouble();
+                            quanto[nItens] = quantidade;
                             System.out.println("Insira o valor do produto.");
                             double valorProduto = scanner.nextDouble();
+                            preco[nItens] = valorProduto;
                             nItens++;
                             break;
 
@@ -102,12 +104,13 @@ public class projeto {
 
                         case 'n':
                             for (int i = 0; i < nItens; i++) {
-                                System.out.printf("%d \t %s \n", (i + 1), nome[i]);}
+                                System.out.printf("%d \t %s \n", (i + 1), nome[i]);
+                            }
 
                             System.out.println("Insira a posição do item.");
                             int pos = scanner.nextInt();
 
-                            if (pos >= 0|| pos < nItens) {
+                            if (pos >= 0 || pos < nItens) {
                                 for (int i = pos; i < nItens - 1; i++) {
 
                                     nome[i] = nome[i + 1];
@@ -118,7 +121,7 @@ public class projeto {
                                 }
                                 nItens--;
                             }
-                                System.out.println("Item na posição " + pos + " removido");
+                            System.out.println("Item na posição " + pos + " removido");
 
                         case 'a':
                             System.out.println("Apagar itens da posição m à n da lista.");
@@ -127,11 +130,16 @@ public class projeto {
                         case 'L':
                             System.out.println(submenuListar);
                             char Lista = scanner.next().charAt(0);
+
                             switch (Lista) {
                                 case 't':
                                     System.out.println("Listar todos os itens.");
+                                    System.out.printf(" %-4s  %-25s  %-10s  %-8s  %-4s\n", "Item", "Nome", "Quantidade", "Preço", "Feito");
                                     for (int i = 0; i < nItens; i++) {
-                                        System.out.printf("%d \t %s \t % \t % \n", (i + 1), nome[i], , );
+                                        for (i = 0; i < nItens; i++) {
+                                            System.out.printf(" %-4d  %-25s  %-10.2f  %-8.2f  %-4b\n", (i + 1), nome[i], quanto[i], preco[i], feito[i]);
+                                            char marcado = feito[i] ? 'x' : ' ';
+                                        }
                                     }
                                     break;
                                 case 'c':
@@ -150,14 +158,31 @@ public class projeto {
                     }
                     break;
 
-                case 'f':
+                case 'F':
                     System.out.println(submenuF);
                     switch (opcao) {
-                        case 'm':
-                            System.out.println();
+                        case 'M':
+
+                            System.out.printf(" %-4s  %-25s  %-10s  %-8s  %-4s\n", "Item", "Nome", "Quantidade", "Preço", "Comprado");
+                            for (int i = 0; i < nItens; i++) {
+                                System.out.printf(" %-4d  %-25s  %-10.2f  %-8.2f  %-4b\n", (i + 1), nome[i], quanto[i], preco[i], feito[i]);
+                            }
+                            if (nItens > 0) {
+                                for (int i = 0; i < nItens; i++) {
+                                    if (!feito[i]) {
+                                        feito[i] = true;
+                                        System.out.println(nome[i] + " está assinalado como comprado.");
+                                        break;
+                                    }
+                                }
+                                System.out.println("Os itens que selecionou estão todos assinalados como comprados.");
+                            } else {
+                                System.out.println("A lista está vazia.");
+                            }
+
                             break;
 
-                        case 'd':
+                        case 'D':
                             System.out.println();
                             break;
 
