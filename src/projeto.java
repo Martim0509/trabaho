@@ -56,9 +56,13 @@ public class projeto {
 
                     switch (opcao) {
                         case 'I':
-                            System.out.println("Inserir item no fim da lista.");
-                            String novoItem = scanner.next();
-                            nome[nItens] = novoItem;
+                            System.out.println("Insira um produto.");
+                            String novoProduto = scanner.next();
+                            nome[nItens] = novoProduto;
+                            System.out.println("Indique a sua quantidade.");
+                            double quantidade = scanner.nextDouble();
+                            System.out.println("Insira o valor do produto.");
+                            double valorProduto = scanner.nextDouble();
                             nItens++;
                             break;
 
@@ -147,7 +151,6 @@ public class projeto {
                     break;
 
                 case 'f':
-                case 'F':
                     System.out.println(submenuF);
                     switch (opcao) {
                         case 'm':
@@ -178,7 +181,6 @@ public class projeto {
 
 
                 case 'c':
-                case 'C':
                     System.out.println(submenuC);
                     switch (opcao) {
                         case 'l':
