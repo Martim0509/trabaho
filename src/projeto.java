@@ -71,6 +71,7 @@ public class projeto {
                             int posicao1 = scanner.nextInt() - 1;
                             if (posicao1 < 0 || posicao1 >= nItens) {
                                 System.out.println("Posição inválida.");
+                                System.out.println("martim é gay <3");
                                 return;}
 
                             System.out.println("Insira a posicao que pertende que fique esse item.");
@@ -87,13 +88,11 @@ public class projeto {
                             for (int i = 0; i < nItens; i++) {
                                 System.out.printf("%d \t %s \n", (i + 1), nome[i]);
                             }
-
-
-
                             break;
 
                         case 'a':
-                            System.out.println("Apagar último item inserido na lista.");
+                            nItens--;
+                            System.out.println("O item inserido por último foi retirado da lista.");
                             break;
 
                         case 'n':
@@ -107,8 +106,8 @@ public class projeto {
 
                         case 'L':
                             System.out.println(submenuListar);
-                            char opLista = scanner.next().charAt(0);
-                            switch (opLista) {
+                            char Lista = scanner.next().charAt(0);
+                            switch (Lista) {
                                 case 't':
                                     System.out.println("Listar todos os itens.");
                                     for (int i = 0; i < nItens; i++) {
@@ -116,10 +115,13 @@ public class projeto {
                                     }
                                     break;
                                 case 'c':
+                                    System.out.println("Listar itens comprados");
                                     break;
                                 case 'p':
+                                    System.out.println("Listar itens por comprar");
                                     break;
                             }
+                            break;
 
 
                         case 'v':
@@ -190,8 +192,6 @@ public class projeto {
 
     }
 }
-
-
 
 
 
