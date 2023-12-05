@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.sql.SQLOutput;
 
 public class projeto {
     public static void main(String[] args) {
@@ -47,24 +46,10 @@ public class projeto {
 
         char opcao;
 
-        System.out.println("Insira um produto.");
-        String novoProduto = scanner.next();
-        nome[nItens] = novoProduto;
-        System.out.println("Indique a sua quantidade.");
-        double quantidade = scanner.nextDouble();
-        System.out.println("Insira o valor do produto.");
-        double valorProduto = scanner.nextDouble();
-        System.out.println("Assim:");
-        double preço = quantidade * valorProduto;
-
-
-
-
         do {
             System.out.println(menuPrincipal);
             opcao = scanner.next().charAt(0);
             switch (opcao) {
-                case 'e':
                 case 'E':
                     System.out.println(submenuE);
                     opcao = scanner.next().charAt(0);
@@ -75,7 +60,6 @@ public class projeto {
                             String novoItem = scanner.next();
                             nome[nItens] = novoItem;
                             nItens++;
-                            System.out.println("O item inserido foi para o fim da lista.");
                             break;
 
                         case 'p':
@@ -107,33 +91,32 @@ public class projeto {
                             }
                             break;
 
-                        case 'a':
+                        case 'A':
                             nItens--;
                             System.out.println("O item inserido por último foi retirado da lista.");
                             break;
 
                         case 'n':
-                            System.out.println("Apagar item na posição (n) da lista.");
+                            for (int i = 0; i < nItens; i++) {
+                                System.out.printf("%d \t %s \n", (i + 1), nome[i]);}
+
                             System.out.println("Insira a posição do item.");
-                            int n = scanner.nextInt();
+                            int pos = scanner.nextInt();
 
-                            if (n >= 0|| n < nItens){
-                                for(int i= 0 ;i<n ; i++){
+                            if (pos >= 0|| pos < nItens) {
+                                for (int i = pos; i < nItens - 1; i++) {
 
-
-                                    novalista+= nome[i];
-
-                                }
-                                for(int j = n +1; j<= nItens; j++ ){
-                                    novalista+= nome[j];
+                                    nome[i] = nome[i + 1];
+                                    quanto[i] = quanto[i + 1];
+                                    preco[i] = preco[i + 1];
+                                    feito[i] = feito[i + 1];
 
                                 }
+                                nItens--;
                             }
-                            nItens--;
-                            System.out.println("O item da posição" + n +" foi apagado");
-                            break;
+                                System.out.println("Item na posição " + pos + " removido");
 
-                        case 'A':
+                        case 'a':
                             System.out.println("Apagar itens da posição m à n da lista.");
                             break;
 
@@ -144,7 +127,7 @@ public class projeto {
                                 case 't':
                                     System.out.println("Listar todos os itens.");
                                     for (int i = 0; i < nItens; i++) {
-                                        System.out.printf("%d \t %s \n", (i + 1), nome[i]);
+                                        System.out.printf("%d \t %s \t % \t % \n", (i + 1), nome[i], , );
                                     }
                                     break;
                                 case 'c':
