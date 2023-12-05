@@ -70,6 +70,7 @@ public class projeto {
                             int posicao1 = scanner.nextInt() - 1;
                             if (posicao1 < 0 || posicao1 >= nItens) {
                                 System.out.println("Posição inválida.");
+                                System.out.println("martim é gay <3");
                                 return;}
 
                             System.out.println("Insira a posicao que pertende que fique esse item.");
