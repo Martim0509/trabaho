@@ -113,8 +113,24 @@ public class projeto {
                             break;
 
                         case 'n':
-                        case 'N':
                             System.out.println("Apagar item na posição (n) da lista.");
+                            System.out.println("Insira a posição do item.");
+                            int n = scanner.nextInt();
+
+                            if (n >= 0|| n < nItens){
+                                for(int i= 0 ;i<n ; i++){
+
+
+                                    novalista+= nome[i];
+
+                                }
+                                for(int j = n +1; j<= nItens; j++ ){
+                                    novalista+= nome[j];
+
+                                }
+                            }
+                            nItens--;
+                            System.out.println("O item da posição" + n +" foi apagado");
                             break;
 
                         case 'A':
