@@ -13,6 +13,9 @@ public class projeto {
         int nItens = 0;
 
 
+        String novalista []  ;
+
+
         String menuPrincipal = "(E)ditar lista.\n"
                 + "(F)azer compras.\n"
                 + "Fazer (c)ontas.\n"
@@ -44,6 +47,19 @@ public class projeto {
 
         char opcao;
 
+        System.out.println("Insira um produto.");
+        String novoProduto = scanner.next();
+        nome[nItens] = novoProduto;
+        System.out.println("Indique a sua quantidade.");
+        double quantidade = scanner.nextDouble();
+        System.out.println("Insira o valor do produto.");
+        double valorProduto = scanner.nextDouble();
+        System.out.println("Assim:");
+        double preço = quantidade * valorProduto;
+
+
+
+
         do {
             System.out.println(menuPrincipal);
             opcao = scanner.next().charAt(0);
@@ -71,14 +87,15 @@ public class projeto {
                             int posicao1 = scanner.nextInt() - 1;
                             if (posicao1 < 0 || posicao1 >= nItens) {
                                 System.out.println("Posição inválida.");
-                                System.out.println("martim é gay <3");
-                                return;}
+                                return;
+                            }
 
                             System.out.println("Insira a posicao que pertende que fique esse item.");
                             int posicao2 = scanner.nextInt() - 1;
                             if (posicao2 < 0 || posicao2 >= nItens) {
                                 System.out.println("Nova posição inválida.");
-                                return;}
+                                return;
+                            }
 
                             String subs = nome[posicao1];
                             nome[posicao1] = nome[posicao2];
