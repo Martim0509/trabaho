@@ -252,9 +252,26 @@ public class projeto {
                                     System.out.printf(" %d  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
                                 }
                             }
-                            System.out.println("Qual o nome do item a ser marcado ou desmarcado");
-                            char nom= scanner.next().charAt(0);
+                            System.out.println("\nQual o nome do item que pretende mudar o estado?");
+                            String item = scanner.next();
+                            boolean estadoItem = false;
 
+                            for (int i=0; i < nItens; i++) {
+                                if (nome[i].length() > 0 && nome[i].charAt(0) == item.charAt(0)) {
+                                    feito[i] = !feito[i];
+                                    System.out.println("Mudança feita com sucesso!\n");
+
+                                }
+
+                            }
+                            System.out.println("Lista de produtos");
+                            System.out.printf("%s  %-25s  %-10s  %-8s %-8s\n", " ", "Item", "Quantidade", "Preço", "Comprado");
+                            for (int i = 0; i < nItens; i++) {
+                                for (i = 0; i < nItens; i++) {
+                                    char marcado = feito[i] ? 'x' : ' ';
+                                    System.out.printf(" %d  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
+                                }
+                            }
 
                             break;
 
