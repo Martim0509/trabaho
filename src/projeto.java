@@ -214,6 +214,7 @@ public class projeto {
                                 char marcado = feito[i] ? 'x' : ' ';
                                 System.out.printf(" %d  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
                             }
+                            boolean primeiroItem = false;
                             if (nItens > 0) {
                                 for (int i = 0; i < nItens; i++) {
                                     if (feito[i]) {
@@ -335,9 +336,7 @@ public class projeto {
             }
 
 
-
-        }
-        while (opcao != 'S');
+        } while (opcao != 'S');
         System.out.println("Encerrou o programa.");
 
 
