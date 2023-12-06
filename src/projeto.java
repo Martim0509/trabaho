@@ -12,9 +12,6 @@ public class projeto {
         int nItens = 0;
 
 
-        String novalista[];
-
-
         String menuPrincipal = "(E)ditar lista.\n"
                 + "(F)azer compras.\n"
                 + "Fazer (c)ontas.\n"
@@ -122,6 +119,7 @@ public class projeto {
                                 nItens--;
                             }
                             System.out.println("Item na posição " + pos + " removido");
+                            break;
 
                         case 'a':
                             System.out.println("Apagar itens da posição m à n da lista.");
@@ -164,6 +162,7 @@ public class projeto {
                         case 'M':
 
                             System.out.printf(" %-4s  %-25s  %-10s  %-8s  %-4s\n", "Item", "Nome", "Quantidade", "Preço", "Comprado");
+
                             for (int i = 0; i < nItens; i++) {
                                 System.out.printf(" %-4d  %-25s  %-10.2f  %-8.2f  %-4b\n", (i + 1), nome[i], quanto[i], preco[i], feito[i]);
                             }
@@ -226,10 +225,8 @@ public class projeto {
                     }
                     break;
 
-            }
-
         }
-        while (opcao != 's' && opcao != 'S');
+        while (opcao != 'S');
         System.out.println("Encerrou o programa.");
 
 
