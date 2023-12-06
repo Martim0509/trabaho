@@ -357,14 +357,24 @@ public class projeto {
                     opcao = scanner.next().charAt(0);
                     switch (opcao) {
                         case 'l':
-                            System.out.println("------------------------------------------");
-                            System.out.println("Quanto custa a lista?\n");
+                            System.out.println("---------------------------------------------------------------");
+                            double quantocusta1 = 0;
 
+                            for(int i = 0; i < nItens; i++){
+                                quantocusta1 = quantocusta1+(quanto[i]*preco[i]);
+                            }
+                            System.out.println("A lista custa "+quantocusta1);
                             break;
                         case 'g':
-                            System.out.println("------------------------------------------");
-                            System.out.println("Quanto já gastei?\n");
+                            System.out.println("---------------------------------------------------------------");
+                            double gasto = 0;
+                            for(int i = 0; i < nItens; i++){
+                               if(feito[i]){
+                                   gasto = gasto+(quanto[i]*preco[i]);
+                               }
 
+                            }
+                            System.out.println("No total o utilizador gastou "+gasto);
                             break;
                         case 'f':
                             System.out.println("---------------------------------------------------------------");
