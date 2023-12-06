@@ -108,7 +108,7 @@ public class projeto {
                             int pos = scanner.nextInt();
 
                             if (pos >= 0 || pos < nItens) {
-                                for (int i = pos; i < nItens - 1; i++) {
+                                for (int i = pos - 1; i < nItens - 1; i++) {
 
                                     nome[i] = nome[i + 1];
                                     quanto[i] = quanto[i + 1];
@@ -123,6 +123,32 @@ public class projeto {
 
                         case 'a':
                             System.out.println("Apagar itens da posição m à n da lista.");
+
+
+                            if (nItens > 0) {
+                                System.out.println("Insira a posição do primeiro item.");
+                                int m = scanner.nextInt();
+                                System.out.println("Insira a posição do ultimo item.");
+                                int n = scanner.nextInt();
+
+
+                                if (m >= 0 || n < nItens || m <= n) {
+                                    int removidos = n - m + 1;
+                                    for (int i = m ; i < nItens - removidos; i++) {
+                                        nome[i] = nome[i + removidos];
+                                        quanto[i] = quanto[i + removidos];
+                                        preco[i] = preco[i + removidos];
+                                        feito[i] = feito[i + removidos];
+                                    }
+                                    nItens -= removidos;
+                                    System.out.println("Os itens da posição " + m + " à posição " + n + " foram removidos.");
+                                } else {
+                                    System.out.println("posições inválidas.");
+                                }
+                            } else {
+                                System.out.println("A lista está vazia");
+                            }
+
                             break;
 
                         case 'L':
@@ -158,6 +184,7 @@ public class projeto {
 
                 case 'F':
                     System.out.println(submenuF);
+                    opcao = scanner.next().charAt(0);
                     switch (opcao) {
                         case 'M':
 
@@ -174,31 +201,48 @@ public class projeto {
                                         break;
                                     }
                                 }
-                                System.out.println("Os itens que selecionou estão todos assinalados como comprados.");
+                            } else {
+                                System.out.println("A lista está vazia.");
+
+                            }
+
+                            break;
+
+                        case 'D':
+                            System.out.println("Desmarcar primeiro item comprado.\n");
+                            System.out.printf(" %-4s  %-25s  %-10s  %-8s  %-4s\n", "Item", "Nome", "Quantidade", "Preço", "Comprado");
+
+                            for (int i = 0; i < nItens; i++) {
+                                System.out.printf(" %-4d  %-25s  %-10.2f  %-8.2f  %-4b\n", (i + 1), nome[i], quanto[i], preco[i], feito[i]);
+                            }
+                            if (nItens > 0) {
+                                for (int i = 0; i < nItens; i--) {
+                                    if (!feito[i]) {
+                                        feito[i] = true;
+                                        System.out.println(nome[i] + " está assinalado como por comprar.");
+                                        break;
+                                    }
+                                }
                             } else {
                                 System.out.println("A lista está vazia.");
                             }
 
                             break;
 
-                        case 'D':
-                            System.out.println();
-                            break;
-
                         case 'n':
-                            System.out.println();
+                            System.out.println("Trocar estado por nome.\n");
                             break;
 
                         case 'p':
-                            System.out.println();
+                            System.out.println("Trocar estado por posição.\n");
                             break;
 
                         case 'l':
-                            System.out.println();
+                            System.out.println("Listar.\n");
                             break;
 
                         case 'v':
-                            System.out.println();
+                            System.out.println("Voltar.");
                             break;
                     }
                     break;
@@ -206,24 +250,29 @@ public class projeto {
 
                 case 'c':
                     System.out.println(submenuC);
+                    opcao = scanner.next().charAt(0);
                     switch (opcao) {
                         case 'l':
-                            System.out.println();
-                            break;
+                            System.out.println("Quanto custa a lista?\n");
+                            double custoTotal = 0.0;
 
-                        case 'g':
-                            System.out.println();
-                            break;
-
-                        case 'f':
-                            System.out.println();
-                            break;
-
-                        case 'm':
-                            System.out.println();
-                            break;
                     }
                     break;
+
+                case 'g':
+                    System.out.println("Quanto já gastei?\n");
+                    break;
+
+                case 'f':
+                    System.out.println("Quanto custa o que falta comprar?\n");
+                    break;
+
+                case 'm':
+                    System.out.println("Qual o preço médio por item?");
+                    break;
+
+            }
+
 
         }
         while (opcao != 'S');
