@@ -85,31 +85,27 @@ public class projeto {
                             for (int i = 0; i < nItens; i++) {
                                 System.out.printf("%d \t %s \n", (i + 1), nome[i]);
 
-
                             }
                             System.out.println("---------------------------------------------------------------");
-                            System.out.println("Insira a posição do item.");
-                            int posicao1 = scanner.nextInt() - 1;
-                            if (posicao1 < 0 || posicao1 >= nItens) {
+                            System.out.println("Insira a posição para inserir o item:");
+                            int posicao = scanner.nextInt();
+                            scanner.nextLine();
+                            if (posicao >= 0 && posicao < nItens && nItens < tamMax) {
+
+
+                                // Desloca os itens para abrir espaço para o novo item
+                                for (int i = nItens; i > posicao; i--) {
+                                    System.out.println("Insira um novo item.");
+                                    String itemPosicao = scanner.nextLine();
+                                    nome[i] = nome[i - 1];
+
+                                nome[posicao - 1] = itemPosicao;
+                                nItens++;
+                                    System.out.println("---------------------------------------------------------------");
+                                    System.out.println("O item " + itemPosicao + " está agora na posição " + posicao + ".");
+                                }
+                            } else {
                                 System.out.println("Posição inválida.");
-                                return;
-                            }
-
-                            System.out.println("Insira a posicao que pertende que fique esse item.");
-                            int posicao2 = scanner.nextInt() - 1;
-                            if (posicao2 < 0 || posicao2 >= nItens) {
-                                System.out.println("Nova posição inválida.");
-                                return;
-                            }
-
-                            String subs = nome[posicao1];
-                            nome[posicao1] = nome[posicao2];
-                            nome[posicao2] = subs;
-
-                            System.out.println("---------------------------------------------------------------");
-                            System.out.println("Lista atualizada:");
-                            for (int i = 0; i < nItens; i++) {
-                                System.out.printf("%d: \t %s \n", (i + 1), nome[i]);
                             }
                             break;
 
@@ -197,7 +193,7 @@ public class projeto {
                             for (int i = 0; i < nItens; i++) {
                                 for (i = 0; i < nItens; i++) {
                                     char marcado = feito[i] ? 'x' : ' ';
-                                    System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i],marcado);
+                                    System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
                                 }
                             }
                             break;
@@ -227,14 +223,14 @@ public class projeto {
                             System.out.printf("%s  %-25s  %-10s  %-8s %-8s\n", " ", "Item", "Quantidade", "Preço", "Comprado");
                             for (int i = 0; i < nItens; i++) {
                                 char marcado = feito[i] ? 'x' : ' ';
-                                System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i],marcado);
+                                System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
                             }
                             //assinala o item como comprado
                             if (nItens > 0) {
                                 for (int i = 0; i < nItens; i++) {
                                     if (!feito[i]) {
                                         feito[i] = true;
-                                        System.out.println("\n"+nome[i] + " está assinalado como comprado.");
+                                        System.out.println("\n" + nome[i] + " está assinalado como comprado.");
                                         break;
                                     }
                                 }
@@ -248,7 +244,7 @@ public class projeto {
 
                             for (int i = 0; i < nItens; i++) {
                                 char marcado = feito[i] ? 'x' : ' ';
-                                System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i],marcado);
+                                System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
                             }
 
                             break;
@@ -261,7 +257,7 @@ public class projeto {
                             System.out.printf("%s  %-25s  %-10s  %-8s %-8s\n", " ", "Item", "Quantidade", "Preço", "Comprado");
                             for (int i = 0; i < nItens; i++) {
                                 char marcado = feito[i] ? 'x' : ' ';
-                                System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i],marcado);
+                                System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
                             }
                             boolean primeiroItem = false;
                             //desmarca o primeiro item marcado como comprado
@@ -269,7 +265,7 @@ public class projeto {
                                 for (int i = 0; i < nItens; i++) {
                                     if (feito[i]) {
                                         feito[i] = false;
-                                        System.out.println("\n"+ nome[i] + " está assinalado como por comprar.");
+                                        System.out.println("\n" + nome[i] + " está assinalado como por comprar.");
                                         primeiroItem = true;
                                         break;
                                     }
@@ -283,7 +279,7 @@ public class projeto {
                             System.out.printf("%s  %-25s  %-10s  %-8s %-8s\n", " ", "Item", "Quantidade", "Preço", "Comprado");
                             for (int i = 0; i < nItens; i++) {
                                 char marcado = feito[i] ? 'x' : ' ';
-                                System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i],marcado);
+                                System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
                             }
 
                             break;
@@ -298,14 +294,14 @@ public class projeto {
                             for (int i = 0; i < nItens; i++) {
                                 for (i = 0; i < nItens; i++) {
                                     char marcado = feito[i] ? 'x' : ' ';
-                                    System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i],marcado);
+                                    System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
                                 }
                             }
                             System.out.println("\nQual o nome do item que pretende mudar o estado?");
                             String item = scanner.next();
                             boolean estadoItem = false;
                             //muda o estado de um item pelo nome
-                            for (int i=0; i < nItens; i++) {
+                            for (int i = 0; i < nItens; i++) {
                                 if (nome[i].length() > 0 && nome[i].charAt(0) == item.charAt(0)) {
                                     feito[i] = !feito[i];
                                     System.out.println("Mudança feita com sucesso!\n");
@@ -319,7 +315,7 @@ public class projeto {
                             for (int i = 0; i < nItens; i++) {
                                 for (i = 0; i < nItens; i++) {
                                     char marcado = feito[i] ? 'x' : ' ';
-                                    System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i],marcado);
+                                    System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
                                 }
                             }
 
@@ -333,16 +329,16 @@ public class projeto {
                             System.out.printf("%s  %-25s  %-10s  %-8s %-8s\n", " ", "Item", "Quantidade", "Preço", "Comprado");
                             for (int i = 0; i < nItens; i++) {
                                 char marcado = feito[i] ? 'x' : ' ';
-                                System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i],marcado);
+                                System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
                             }
                             System.out.println("\nQual a posição do item a ser marcado ou desmarcado");
-                            int pos =scanner.nextInt();
-                            if(pos<0 || pos >=nItens){
+                            int pos = scanner.nextInt();
+                            if (pos < 0 || pos >= nItens) {
                                 //imprime caso a posição seja inválida
                                 System.out.println("posição inválida");
-                            }else{
+                            } else {
                                 //muda o estado do item pela posição
-                                feito[pos]= !feito[pos];
+                                feito[pos] = !feito[pos];
                                 String estado = feito[pos] ? "comprado" : "por comprar";
                                 System.out.println(nome[pos] + " está agora " + estado + ".");
                             }
@@ -351,7 +347,7 @@ public class projeto {
                             System.out.printf("%s  %-25s  %-10s  %-8s %-8s\n", " ", "Item", "Quantidade", "Preço", "Comprado");
                             for (int i = 0; i < nItens; i++) {
                                 char marcado = feito[i] ? 'x' : ' ';
-                                System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i],marcado);
+                                System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
                             }
                             break;
 
@@ -388,7 +384,7 @@ public class projeto {
                                     for (int i = 0; i < nItens; i++) {
                                         char marcado = feito[i] ? 'x' : ' ';
                                         if (feito[i]) {
-                                            System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i],marcado);
+                                            System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
                                         }
                                     }
                                     break;
@@ -403,7 +399,7 @@ public class projeto {
                                     for (int i = 0; i < nItens; i++) {
                                         char marcado = feito[i] ? 'x' : ' ';
                                         if (!feito[i]) {
-                                            System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i],marcado);
+                                            System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
                                         }
                                     }
                                     break;
@@ -436,10 +432,10 @@ public class projeto {
                             System.out.println("---------------------------------------------------------------");
                             double quantocusta1 = 0;
 
-                            for(int i = 0; i < nItens; i++){
-                                quantocusta1 = quantocusta1+(quanto[i]*preco[i]);
+                            for (int i = 0; i < nItens; i++) {
+                                quantocusta1 = quantocusta1 + (quanto[i] * preco[i]);
                             }
-                            System.out.println("A lista custa "+quantocusta1);
+                            System.out.println("A lista custa " + quantocusta1);
                             break;
 
                         //Calcula quanto já gastou.
@@ -447,13 +443,13 @@ public class projeto {
                         case 'g':
                             System.out.println("---------------------------------------------------------------");
                             double gasto = 0;
-                            for(int i = 0; i < nItens; i++){
-                               if(feito[i]){
-                                   gasto = gasto+(quanto[i]*preco[i]);
-                               }
+                            for (int i = 0; i < nItens; i++) {
+                                if (feito[i]) {
+                                    gasto = gasto + (quanto[i] * preco[i]);
+                                }
 
                             }
-                            System.out.println("No total o utilizador gastou "+gasto);
+                            System.out.println("No total o utilizador gastou " + gasto);
                             break;
 
                         //Calcula o preço do que falta comprar.
@@ -461,12 +457,12 @@ public class projeto {
                         case 'f':
                             System.out.println("---------------------------------------------------------------");
                             double faltacomprar = 0;
-                            for(int i = 0; i < nItens; i++){
-                                if(!feito[i]) {
+                            for (int i = 0; i < nItens; i++) {
+                                if (!feito[i]) {
                                     faltacomprar = faltacomprar + (quanto[i] * preco[i]);
                                 }
                             }
-                            System.out.println("O valor do que falta comprar é "+faltacomprar);
+                            System.out.println("O valor do que falta comprar é " + faltacomprar);
                             break;
 
                         //Calcula o preço médio por item.
@@ -476,21 +472,21 @@ public class projeto {
                             System.out.println("Qual o preço médio por item?");
                             double mediatudo = 0;
                             double quantocustaa = 0;
-                            if(nItens>0){
-                                for(int i =0;  i < nItens; i++) {
+                            if (nItens > 0) {
+                                for (int i = 0; i < nItens; i++) {
                                     quantocustaa = quantocustaa + (quanto[i] * preco[i]);
                                     mediatudo = quantocustaa / nItens;
                                 }
-                            }else {
+                            } else {
                                 System.out.println("A lista está vazia!");
                             }
-                            System.out.println("O preço medio por item é " +mediatudo );
+                            System.out.println("O preço medio por item é " + mediatudo);
                             break;
 
                     }
             }
 
-        //Encerra o programa.
+            //Encerra o programa.
 
         } while (opcao != 'S');
         System.out.println("Encerrou o programa.");
