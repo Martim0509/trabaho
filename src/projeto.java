@@ -83,7 +83,7 @@ public class projeto {
                             System.out.println("Lista");
                             //Imprime a tabela
                             for (int i = 0; i < nItens; i++) {
-                                System.out.printf("%d \t %s \n", (i + 1), nome[i]);
+                                System.out.printf("%d:  %-25s  %-10.2f  %-8.2f\n", (i + 1), nome[i], quanto[i], preco[i]);
 
                             }
                             System.out.println("---------------------------------------------------------------");
@@ -92,17 +92,28 @@ public class projeto {
                             scanner.nextLine();
                             if (posicao >= 0 && posicao < nItens && nItens < tamMax) {
 
+                                System.out.println("Insira um novo item:");
+                                String novoItem = scanner.nextLine();
+
+                                System.out.println("Insira a quantidade:");
+                                int novaQuantidade = scanner.nextInt();
+
+                                System.out.println("Insira o preço:");
+                                double novoPreco = scanner.nextDouble();
 
                                 // Desloca os itens para abrir espaço para o novo item
                                 for (int i = nItens; i > posicao; i--) {
-                                    System.out.println("Insira um novo item.");
-                                    String itemPosicao = scanner.nextLine();
-                                    nome[i] = nome[i - 1];
 
-                                nome[posicao - 1] = itemPosicao;
-                                nItens++;
+                                    nome[i] = nome[i - 1];
+                                    quanto[i] = quanto[i - 1];
+                                    preco[i] = preco[i - 1];
+
+                                    nome[posicao - 1] = novoItem;
+                                    quanto[posicao - 1] = novaQuantidade;
+                                    preco[posicao - 1] = novoPreco;
+
                                     System.out.println("---------------------------------------------------------------");
-                                    System.out.println("O item " + itemPosicao + " está agora na posição " + posicao + ".");
+                                    System.out.println("O item " + novoItem + " está agora na posição " + posicao + ".");
                                 }
                             } else {
                                 System.out.println("Posição inválida.");
@@ -122,7 +133,7 @@ public class projeto {
                             //Imprime a lista
                             System.out.println("Lista");
                             for (int i = 0; i < nItens; i++) {
-                                System.out.printf("%d: \t %s \n", (i + 1), nome[i]);
+                                System.out.printf("%s  %-25s  %-10s  %-8s\n", " ", "Item", "Quantidade", "Preço");
                             }
                             //Imprime a posição escolhida
                             System.out.println("Insira a posição do item.");
@@ -193,7 +204,7 @@ public class projeto {
                             for (int i = 0; i < nItens; i++) {
                                 for (i = 0; i < nItens; i++) {
                                     char marcado = feito[i] ? 'x' : ' ';
-                                    System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", i, nome[i], quanto[i], preco[i], marcado);
+                                    System.out.printf("%d:  %-25s  %-10.2f  %-8.2f  %-8c\n", (i + 1), nome[i], quanto[i], preco[i], marcado);
                                 }
                             }
                             break;
