@@ -489,6 +489,7 @@ public class projeto {
                                     mediatudo = quantocustaa / nItens;
                                 }
                             } else {
+                                //imprime caso a lista esteja vazia
                                 System.out.println("A lista está vazia!");
                             }
                             System.out.println("O preço medio por item é " + mediatudo);
